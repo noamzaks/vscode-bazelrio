@@ -13,7 +13,9 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:bazelrio.new-project"
+        "onStartupFinished",
+        "onCommand:bazelrio.new-project",
+        "onCommand:bazelrio.build"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -22,8 +24,25 @@
                 "command": "bazelrio.new-project",
                 "title": "New Project",
                 "category": "BazelRIO"
+            },
+            {
+                "command": "bazelrio.build",
+                "title": "Build Project",
+                "category": "BazelRIO"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "BazelRIO Configuration",
+            "properties": {
+                "bazelRIO.continuousBuild": {
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Rebuild the project every time a file is saved.",
+                    "scope": "resource"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "yarn run package",
