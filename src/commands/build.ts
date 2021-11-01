@@ -17,7 +17,7 @@ const buildCommand = async () => {
         folders[0],
         "Build",
         "roborio",
-        new code.ShellExecution("bazel build '//...:*' --copt=-std=c++17")
+        new code.ShellExecution("bazel build '//...:*' --config=roborio")
     )
 
     task.presentationOptions.reveal = code.TaskRevealKind.Silent

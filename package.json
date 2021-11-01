@@ -3,6 +3,7 @@
     "displayName": "BazelRIO",
     "author": "BazelRIO Developers",
     "description": "FRC Programming with BazelRIO",
+    "repository": "https://github.com/noamzaks/vscode-bazelrio",
     "version": "0.0.1",
     "publisher": "bazelrio",
     "license": "MIT",

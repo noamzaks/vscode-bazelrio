@@ -2,7 +2,8 @@ import * as code from "vscode"
 import { join } from "path"
 import newProjectCommand from "./commands/new-project"
 import buildCommand from "./commands/build"
-import Configuration, { getConfiguration } from "./configuration"
+import { getConfiguration } from "./configuration"
+import deployCommand from "./commands/deploy"
 
 export let resources: string
 
@@ -14,7 +15,8 @@ export const activate = (context: code.ExtensionContext) => {
             "bazelrio.new-project",
             newProjectCommand
         ),
-        code.commands.registerCommand("bazelrio.build", buildCommand)
+        code.commands.registerCommand("bazelrio.build", buildCommand),
+        code.commands.registerCommand("bazelrio.deploy", deployCommand)
     )
 
     code.workspace.onDidSaveTextDocument(() => {

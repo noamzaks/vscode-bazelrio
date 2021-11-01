@@ -6,13 +6,19 @@ const deployCommand = () => {
         return
     }
 
+    code.tasks.taskExecutions
+        .filter(
+            (execution) => execution.task.definition.type === "bazelrio.deploy"
+        )
+        .forEach((execution) => execution.terminate())
+
     code.tasks.executeTask(
         new code.Task(
             { type: "build", task: "roborio" },
             folders[0],
             "Deploy",
             "roborio",
-            new code.ShellExecution("bazel run robot.deploy")
+            new code.ShellExecution("bazel run robot.deploy --config=roborio")
         )
     )
 }
